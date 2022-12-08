@@ -19,3 +19,15 @@ export interface Pilot {
   createdDt: string;
   email: string;
 }
+
+/**
+ Type for the string which represent the date and could be parsed by {@link Date} object
+ **/
+type dateString = string;
+
+export interface Info {
+  listenRange: number;
+  deviceStarted: dateString;
+  uptimeSeconds: number;
+  updateIntervalMs: number;
+}
