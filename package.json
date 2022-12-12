@@ -1,0 +1,10 @@
+{
+  "name": "reaktor-birdnest",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.1.0"
+  }
+}

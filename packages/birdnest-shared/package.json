@@ -1,0 +1,12 @@
+{
+  "name": "@reaktor-birdnest/birdnest-shared",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^4.9.4",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "build": "rimraf ./build && tsc"
+  }
+}
