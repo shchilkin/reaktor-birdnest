@@ -13,11 +13,12 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "start:dev": "npx nodemon",
+    "dev": "npx nodemon",
     "build": "rimraf ./build && tsc",
     "start": "yarn run build && node build/index.js"
   },
   "dependencies": {
+    "@prisma/client": "^4.7.1",
     "axios": "^1.2.1",
     "fast-xml-parser": "^4.0.12"
   }

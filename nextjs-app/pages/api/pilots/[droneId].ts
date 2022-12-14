@@ -7,6 +7,8 @@ export default async function getPilotByDroneId(
 ) {
   const { droneId } = req.query;
 
+  // TODO: check if pilot was within NDZ last 10 minutes
+
   try {
     const pilotInfo = await fetch(
       `https://assignments.reaktor.com/birdnest/pilots/${droneId}`
