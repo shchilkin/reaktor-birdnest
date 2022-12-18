@@ -23,16 +23,20 @@ model Drone {
   firmware     String
   positionY    Float
   positionX    Float
-  attitude     Float
+  altitude     Float
+  Pilot        Pilot    @relation(fields: [pilotId], references: [id], onDelete: Cascade)
+  pilotId      Int      @unique
 }
 
 model Pilot {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   pilotId     String   @unique
   firstName   String
   lastName    String
-  phoneNumber String
+  phoneNumber String   @unique
   createdDt   DateTime
-  email       String
+  email       String   @unique
+  drone       Drone?
 }

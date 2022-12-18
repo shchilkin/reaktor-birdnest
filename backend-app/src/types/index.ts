@@ -20,6 +20,10 @@ export interface Pilot {
   email: string;
 }
 
+export interface PilotObject extends Pilot {
+  drone: Drone;
+}
+
 /**
  Type for the string which represent the date and could be parsed by {@link Date} object
  **/
