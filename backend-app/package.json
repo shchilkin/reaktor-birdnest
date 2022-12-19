@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "npx nodemon",
-    "build": "rimraf ./build && tsc",
+    "build": "rimraf ./build && tsc && npx prisma generate",
     "start": "yarn run build && node build/index.js"
   },
   "dependencies": {
