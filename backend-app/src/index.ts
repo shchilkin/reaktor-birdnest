@@ -3,7 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 // TODO: Create monorepo
 import { Drone, Pilot, PilotObject } from "./types/index";
 import isDroneViolatingPerimiter from "./utils/isDroneViolatingPerimiter";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Pilot as PrismaPilot } from "@prisma/client";
 
 const parserOptions = {
   ignorePiTags: true,
@@ -12,60 +12,6 @@ const parser = new XMLParser(parserOptions);
 const prisma = new PrismaClient();
 const droneEndpoint = "https://assignments.reaktor.com/birdnest/drones";
 const pilotEndpoint = "https://assignments.reaktor.com/birdnest/pilots/";
-
-// const droneRequest = async () => {
-//   try {
-//     // Get Drone data and convert in from XML to JavaScript Object
-//     const data = await axios
-//       .get("https://assignments.reaktor.com/birdnest/drones")
-//       .then((response) => response.data)
-//       .then((data) => parser.parse(data)["report"]["capture"]["drone"]);
-
-//     // Array contains information about drones who passed the perimiter
-//     const intruders: Drone[] = data.filter((drone: Drone) =>
-//       // TODO: Current implementation is not precise, consider comparing float coordinates
-//       isDroneViolatingPerimiter(
-//         Math.floor(drone.positionX),
-//         Math.floor(drone.positionY)
-//       )
-//     );
-
-//     await Promise.all(
-//       intruders.map(async (drone: Drone) => {
-//         console.info(
-//           `Drone ${drone.manufacturer} ${drone.model} with serial number ${drone.serialNumber} is added to intruders database`
-//         );
-//         return prisma.drone.upsert({
-//           where: { serialNumber: drone.serialNumber },
-//           update: {
-//             positionX: drone.positionX,
-//             positionY: drone.positionY,
-//             attitude: drone.altitude,
-//           },
-//           create: {
-//             serialNumber: drone.serialNumber,
-//             manufacturer: drone.manufacturer,
-//             model: drone.model,
-//             mac: drone.mac,
-//             ipv4: drone.ipv4,
-//             ipv6: drone.ipv6,
-//             firmware: drone.firmware,
-//             positionX: drone.positionX,
-//             positionY: drone.positionY,
-//             attitude: drone.altitude,
-//             pilotId:
-//           },
-//         });
-//       })
-//     );
-//   } catch (error) {
-//     console.error(error);
-//   } finally {
-//     async () => {
-//       await prisma.$disconnect();
-//     };
-//   }
-// };
 
 const getIntruderPilots = async (): Promise<PilotObject[]> => {
   // Get Drone data and convert in from XML to JavaScript Object
@@ -102,6 +48,19 @@ const getIntruderPilots = async (): Promise<PilotObject[]> => {
       };
     })
   );
+};
+
+const getStalePilotData = async (): Promise<PrismaPilot[]> => {
+  try {
+    // get all pilot data
+    const data = await prisma.pilot.findMany({});
+    return data.filter((pilot: PrismaPilot) => {
+      return (Date.now() - pilot.updatedAt.valueOf()) / 1000 >= 600;
+    });
+  } catch (error) {
+    console.error("error occure while trying to get pilot data", error);
+    return [];
+  }
 };
 
 const writeIntruderPilots = async () => {
@@ -148,7 +107,7 @@ const writeIntruderPilots = async () => {
             },
           },
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           console.error(error);
         })
         .finally(async () => await prisma.$disconnect());
@@ -157,15 +116,10 @@ const writeIntruderPilots = async () => {
 };
 
 const deleteStalePilotData = async () => {
-  // get all pilot data
-  const data = await prisma.pilot.findMany({});
-
-  const staleData = data.filter((pilot) => {
-    return (Date.now() - pilot.updatedAt.valueOf()) / 1000 >= 600;
-  });
+  const staleData = await getStalePilotData();
 
   await Promise.all(
-    staleData.map((pilot) => {
+    staleData.map((pilot: PrismaPilot) => {
       console.info(`delete ${pilot.firstName} ${pilot.lastName} from database`);
       return prisma.pilot
         .delete({ where: { id: pilot.id } })
