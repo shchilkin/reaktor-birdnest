@@ -22,7 +22,9 @@ const compareTime = (a: PilotWithDrone, b: PilotWithDrone): number => {
 };
 
 const List = () => {
-  const { data, error } = useSWR("/api/pilots", fetcher);
+  const { data, error } = useSWR("/api/pilots", fetcher, {
+    refreshInterval: 2000,
+  });
 
   if (error) return <code>{error}</code>;
 
