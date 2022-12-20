@@ -1,8 +1,8 @@
-interface PilotListItemTimeProps {
+interface PilotTableCellTimeProps {
   time: Date | string;
 }
 
-const PilotListItemTime: React.FunctionComponent<PilotListItemTimeProps> = ({
+const PilotTableCellTime: React.FunctionComponent<PilotTableCellTimeProps> = ({
   time,
 }) => {
   const updatedAt = new Date(time);
@@ -23,9 +23,7 @@ const PilotListItemTime: React.FunctionComponent<PilotListItemTimeProps> = ({
     }
   };
 
-  return (
-    <div className={color(minutes)}>{`last seen ${minutes} minutes ago`}</div>
-  );
+  return <div className={color(minutes)}>{`${minutes} minutes ago`}</div>;
 };
 
-export default PilotListItemTime;
+export default PilotTableCellTime;
