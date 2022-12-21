@@ -13,9 +13,7 @@ export const getPointDistance = (
   xCircleCenter: number,
   yCircleCenter: number
 ): number => {
-  return (
-    Math.pow(xPoint - xCircleCenter, 2) + Math.pow(yPoint - yCircleCenter, 2)
-  );
+  return Math.abs(xPoint - xCircleCenter) + Math.abs(yPoint - yCircleCenter);
 };
 
 /**
@@ -31,7 +29,6 @@ export const getPointDistance = (
 const isDroneViolatingPerimiter = (
   x: number,
   y: number,
-  areaRange = 500000,
   ndzRange = 100000,
   ndzCenterX = 250000,
   ndzCenterY = 250000
@@ -44,10 +41,9 @@ const isDroneViolatingPerimiter = (
     ndzCenterY
   );
   const circleRadius = ndzRange / 2;
-  // TODO: Refactor code to make it more understandable and consistent (add **2 to pointDistanceFromCircleCenter or remove it from radius)
 
   // inside circle d < r | d = r / outside the circle d > r
-  return pointDistanceFromCircleCenter <= Math.pow(circleRadius, 2);
+  return pointDistanceFromCircleCenter <= circleRadius;
 };
 
 export default isDroneViolatingPerimiter;

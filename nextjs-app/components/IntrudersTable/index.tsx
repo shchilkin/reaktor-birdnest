@@ -1,6 +1,7 @@
-import useSWR, { Fetcher } from "swr";
+import useSWR from "swr";
 import { Pilot, Drone } from "@prisma/client";
 import IntrudersTableCell from "../IntrudersTableCell";
+import { fetcher } from "../../utils/fetcher";
 
 const IntrudersTable = () => {
   const { data, error } = useSWR("/api/pilots", fetcher, {
@@ -20,6 +21,7 @@ const IntrudersTable = () => {
         </tr>
       </thead>
       <tbody>
+        {/* @ts-expect-error */}
         {data?.sort(compareTime).map((pilot: PilotWithDrone) => (
           <IntrudersTableCell key={pilot.id} pilot={pilot} />
         ))}
@@ -33,9 +35,6 @@ export default IntrudersTable;
 export interface PilotWithDrone extends Pilot {
   drone: Drone;
 }
-
-const fetcher: Fetcher<PilotWithDrone[]> = (url: string) =>
-  fetch(url).then((res) => res.json());
 
 const getMinutes = (date: Date | string): number => {
   const updatedAt = new Date(date);

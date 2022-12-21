@@ -23,7 +23,13 @@ const PilotTableCellTime: React.FunctionComponent<PilotTableCellTimeProps> = ({
     }
   };
 
-  return <div className={color(minutes)}>{`${minutes} minutes ago`}</div>;
+  return (
+    <div className={color(minutes)}>
+      {Math.floor(seconds) < 60
+        ? `less than minute ago`
+        : `${minutes} minutes ago`}
+    </div>
+  );
 };
 
 export default PilotTableCellTime;

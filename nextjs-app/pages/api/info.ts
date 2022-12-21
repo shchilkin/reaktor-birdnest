@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { XMLParser } from "fast-xml-parser";
 import { Info } from "../../types";
 
-export default async function getDronesData(
+export default async function getInfoData(
   _req: NextApiRequest,
   res: NextApiResponse<Info | String>
 ) {
