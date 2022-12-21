@@ -1,5 +1,5 @@
 import { Drone, Pilot } from "@prisma/client";
-import PilotListItemTime from "../PilotListItem-Time";
+import PilotTableCellTime from "../PilotTableCellTime";
 
 export interface PilotWithDrone extends Pilot {
   drone: Drone;
@@ -19,7 +19,7 @@ const IntrudersTableCell: React.FunctionComponent<PilotListItemProps> = ({
       <td>{pilot.email}</td>
       <td>{pilot.phoneNumber}</td>
       <td>
-        <PilotListItemTime time={pilot.updatedAt} />
+        <PilotTableCellTime time={pilot.updatedAt} />
       </td>
     </tr>
   );
