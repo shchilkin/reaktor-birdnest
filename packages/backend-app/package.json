@@ -6,6 +6,7 @@
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
   "license": "MIT",
   "devDependencies": {
+    "@reaktor-birdnest/types": "*",
     "@types/node": "^18.11.12",
     "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@prisma/client": "4.7.1",
+    "@reaktor-birdnest/types": "^1.0.0",
     "axios": "^1.2.1",
     "fast-xml-parser": "^4.0.12",
     "typescript": "^4.9.4"

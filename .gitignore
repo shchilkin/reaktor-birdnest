@@ -40,3 +40,5 @@ next-env.d.ts
 /packages/*/node_modules
 /packages/*/.next
 /packages/*/build
+/packages/*/dist
+lerna-debug.log

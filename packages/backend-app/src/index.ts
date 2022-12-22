@@ -1,7 +1,6 @@
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
-// TODO: Create monorepo
-import { Drone, Pilot, PilotObject } from "./types/index";
+import { Drone, Pilot, PilotWithDrone } from "@reaktor-birdnest/types";
 import isDroneViolatingPerimiter from "./utils/isDroneViolatingPerimiter";
 import { PrismaClient, Pilot as PrismaPilot } from "@prisma/client";
 
@@ -13,7 +12,7 @@ const prisma = new PrismaClient();
 const droneEndpoint = "https://assignments.reaktor.com/birdnest/drones";
 const pilotEndpoint = "https://assignments.reaktor.com/birdnest/pilots/";
 
-const getIntruderPilots = async (): Promise<PilotObject[]> => {
+const getIntruderPilots = async (): Promise<PilotWithDrone[]> => {
   // Get Drone data and convert in from XML to JavaScript Object
   const droneData = await axios
     .get(droneEndpoint)

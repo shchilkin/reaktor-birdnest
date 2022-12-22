@@ -2,10 +2,17 @@
   "name": "@reaktor-birdnest/types",
   "description": "common types for the project",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
   "license": "MIT",
   "dependencies": {
     "typescript": "^4.9.4"
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc"
   }
 }

@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { XMLParser } from "fast-xml-parser";
-import { Info } from "../../types";
+import { DeviceInfo } from "@reaktor-birdnest/types";
 
 export default async function getInfoData(
   _req: NextApiRequest,
-  res: NextApiResponse<Info | String>
+  res: NextApiResponse<DeviceInfo | String>
 ) {
   const parserOptions = {
     ignorePiTags: true,

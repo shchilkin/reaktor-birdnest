@@ -5,7 +5,7 @@ import { SWRConfig } from "swr";
 import IntrudersTable from "../components/IntrudersTable";
 import DroneDisplay from "../components/DroneDisplay";
 import { getDrones } from "./api/drones";
-import { Drone } from "../types";
+import { Drone } from "@reaktor-birdnest/types";
 
 export async function getServerSideProps() {
   const prisma = new PrismaClient();

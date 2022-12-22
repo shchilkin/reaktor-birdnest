@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { XMLParser } from "fast-xml-parser";
-import { Info } from "../../types";
+import { DeviceInfo } from "@reaktor-birdnest/types";
 
 export const getDrones = async () => {
   const parserOptions = {
@@ -16,7 +16,7 @@ export const getDrones = async () => {
 
 export default async function getDronesData(
   _req: NextApiRequest,
-  res: NextApiResponse<Info | String>
+  res: NextApiResponse<DeviceInfo | String>
 ) {
   try {
     const data = await getDrones();
