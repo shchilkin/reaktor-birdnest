@@ -1,0 +1,11 @@
+{
+  "name": "@reaktor-birdnest/utils",
+  "version": "1.0.0",
+  "description": "common utils for the project",
+  "main": "index.ts",
+  "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.9.4"
+  }
+}

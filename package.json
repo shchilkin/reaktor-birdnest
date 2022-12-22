@@ -1,0 +1,14 @@
+{
+  "name": "reaktor-birdnest",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": "git@github.com:shchilkin/reaktor-birdnest.git",
+  "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^6.1.0"
+  }
+}
