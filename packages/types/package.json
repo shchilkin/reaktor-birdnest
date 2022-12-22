@@ -2,7 +2,7 @@
   "name": "@reaktor-birdnest/types",
   "description": "common types for the project",
   "version": "1.0.0",
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
   "license": "MIT",

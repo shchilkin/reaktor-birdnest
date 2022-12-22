@@ -1,8 +1,8 @@
 import { Drone } from "@prisma/client";
 import React, { useEffect, useRef } from "react";
-import useSWR, { Fetcher } from "swr";
+import useSWR from "swr";
 import { fetcher } from "../../utils/fetcher";
-import isDroneViolatingPerimiter from "../../utils/isDroneViolatingPerimiter";
+import { isDroneViolatingPerimiter } from "@reaktor-birdnest/utils";
 
 interface DroneDisplayProps {
   width: number;

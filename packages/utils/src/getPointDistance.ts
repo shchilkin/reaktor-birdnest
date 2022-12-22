@@ -7,16 +7,11 @@
  * @param yCircleCenter circle center y coordinate
  * @returns distance value between the point and the circle center
  */
-export declare const getPointDistance: (xPoint: number, yPoint: number, xCircleCenter: number, yCircleCenter: number) => number;
-/**
- *
- * @param x
- * @param y
- * @param areaRange
- * @param ndzRange
- * @param ndzCenterX
- * @param ndzCenterY
- * @returns
- */
-declare const isDroneViolatingPerimiter: (x: number, y: number, ndzRange?: number, ndzCenterX?: number, ndzCenterY?: number) => boolean;
-export default isDroneViolatingPerimiter;
+export const getPointDistance = (
+  xPoint: number,
+  yPoint: number,
+  xCircleCenter: number,
+  yCircleCenter: number
+): number => {
+  return Math.abs(xPoint - xCircleCenter) + Math.abs(yPoint - yCircleCenter);
+};

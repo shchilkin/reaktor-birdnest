@@ -1,7 +1,7 @@
 import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 import { Drone, Pilot, PilotWithDrone } from "@reaktor-birdnest/types";
-import isDroneViolatingPerimiter from "./utils/isDroneViolatingPerimiter";
+import { isDroneViolatingPerimiter } from "@reaktor-birdnest/utils";
 import { PrismaClient, Pilot as PrismaPilot } from "@prisma/client";
 
 const parserOptions = {

@@ -10,5 +10,12 @@
   "license": "MIT",
   "devDependencies": {
     "lerna": "^6.1.0"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "link": "lerna link",
+    "prepare": "yarn bootstrap && yarn link",
+    "build": "lerna run build --scope '@reaktor-birdnest/{nextjs-app,types,utils}'",
+    "build:backend": "lerna run build --scope '@reaktor-birdnest/{backend-app,types,utils}'"
   }
 }
