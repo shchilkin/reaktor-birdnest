@@ -1,0 +1,8 @@
+{
+  "references": [
+    { "path": "backend-app" },
+    { "path": "nextjs-app" },
+    { "path": "types" },
+    { "path": "utils" }
+  ]
+}
