@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "repository": "git@github.com:shchilkin/reaktor-birdnest.git",
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
@@ -16,6 +17,7 @@
     "link": "lerna link",
     "prepare": "yarn bootstrap && yarn link",
     "build": "lerna run build --scope '@reaktor-birdnest/{nextjs-app,types,utils}'",
-    "build:backend": "lerna run build --scope '@reaktor-birdnest/{backend-app,types,utils}'"
+    "build:backend": "lerna run build --scope '@reaktor-birdnest/{backend-app,types,utils}'",
+    "dev": "lerna run dev"
   }
 }
