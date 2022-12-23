@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "repository": "git@github.com:shchilkin/reaktor-birdnest.git",
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",

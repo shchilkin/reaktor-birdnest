@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.settings.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "build",
+    "rootDir": "src",
+    "module": "commonjs",
+    "lib": ["es6"],
+    "types": ["node"]
+  },
+  "include": ["src"]
+}

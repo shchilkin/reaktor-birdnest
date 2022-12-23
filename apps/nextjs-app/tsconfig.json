@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.settings.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "jsx": "preserve",
+    "types": ["node"],
+    "esModuleInterop": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../utils/src/isDroneViolatingPerimiter.ts"
+  ]
+}
