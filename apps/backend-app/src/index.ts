@@ -22,7 +22,7 @@ const getIntruderPilots = async (): Promise<PilotWithDrone[]> => {
       console.error(`Erorr occur while trying to get drone data: ${error}`);
     });
 
-  // Array contains information about drones who passed the perimiter
+  /** Array contains information about drones who passed the perimiter */
   const droneIntruders: Drone[] = droneData.filter((drone: Drone) =>
     // TODO: Current implementation is not precise, consider comparing float coordinates
     isDroneViolatingPerimiter(
