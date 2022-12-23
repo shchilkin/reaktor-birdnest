@@ -4,9 +4,7 @@ import IntrudersTableCell from "../IntrudersTableCell";
 import { fetcher } from "../../utils/fetcher";
 
 const IntrudersTable = () => {
-  const { data, error } = useSWR("/api/pilots", fetcher, {
-    refreshInterval: 2000,
-  });
+  const { data, error } = useSWR("/api/pilots", fetcher);
 
   if (error) return <code>{error}</code>;
 
