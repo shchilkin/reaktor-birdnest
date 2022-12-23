@@ -78,9 +78,7 @@ const DroneDisplay: React.FunctionComponent<DroneDisplayProps> = ({
   width,
   height,
 }) => {
-  const { data, error } = useSWR("/api/drones", fetcher, {
-    refreshInterval: 2000,
-  });
+  const { data, error } = useSWR("/api/drones", fetcher);
 
   if (error) return <div>Error</div>;
 
