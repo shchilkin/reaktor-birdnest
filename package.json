@@ -18,7 +18,7 @@
     "prepare": "yarn bootstrap && yarn link",
     "build:backend": "lerna run build --scope '@reaktor-birdnest/{backend-app,types,utils}'",
     "build:frontend": "lerna run build --scope '@reaktor-birdnest/{nextjs-app,types,utils}'",
-    "start:frontend": "lerna run start --scope '@reaktor-birdnest/{nextjs-app}'",
-    "start:backend": "lerna run start --scope '@reaktor-birdnest/{backend-app}'"
+    "start:frontend": "lerna run start --scope '@reaktor-birdnest/nextjs-app'",
+    "start:backend": "lerna run start --scope '@reaktor-birdnest/backend-app'"
   }
 }
