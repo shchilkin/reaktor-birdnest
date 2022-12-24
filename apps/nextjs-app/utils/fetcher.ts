@@ -1,4 +1,5 @@
-import { Fetcher } from "swr";
+import {Fetcher} from "swr";
+import {PilotWithDrone} from "../components/IntrudersTable";
 
-export const fetcher: Fetcher = (url: string) =>
-  fetch(url).then((res) => res.json());
+export const fetcher: Fetcher<PilotWithDrone[], string> = (url: string) =>
+    fetch(url).then((res) => res.json());

@@ -1,0 +1,8 @@
+{
+  "eslint.workingDirectories": [
+    "/apps/backend-app",
+    "/apps/nextjs-app",
+    "/packages/types",
+    "packages/utils"
+  ]
+}

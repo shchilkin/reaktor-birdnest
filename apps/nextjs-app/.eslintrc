@@ -1,5 +1,5 @@
 {
-  "extends": ["../../.eslintrc", "next/core-web-vitals"],
+  "extends": ["../../.eslintrc", "next"],
   "parserOptions": {
     "project": "./tsconfig.json"
   }
