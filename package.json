@@ -10,11 +10,15 @@
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "eslint": "8.22.0",
     "lerna": "^6.1.0"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "link": "lerna link",
+    "lint": "lerna run lint",
     "prepare": "yarn bootstrap && yarn link",
     "build:backend": "lerna run build --scope '@reaktor-birdnest/{backend-app,types,utils}'",
     "build:frontend": "lerna run build --scope '@reaktor-birdnest/{nextjs-app,types,utils}'",

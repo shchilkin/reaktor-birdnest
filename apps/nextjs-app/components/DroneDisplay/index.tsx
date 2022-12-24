@@ -82,9 +82,7 @@ const DroneDisplay: React.FunctionComponent<DroneDisplayProps> = ({
 
   if (error) return <div>Error</div>;
 
-  // TODO: Fix typing
-  // @ts-expect-error
-  return <DroneDisplayCanvas width={width} height={height} drones={data} />;
+  return <DroneDisplayCanvas width={width} height={height} drones={data as Drone[]} />;
 };
 
 export default DroneDisplay;

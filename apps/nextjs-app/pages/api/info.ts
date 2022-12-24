@@ -4,7 +4,7 @@ import { DeviceInfo } from "@reaktor-birdnest/types";
 
 export default async function getInfoData(
   _req: NextApiRequest,
-  res: NextApiResponse<DeviceInfo | String>
+  res: NextApiResponse<DeviceInfo | string>
 ) {
   const parserOptions = {
     ignorePiTags: true,
@@ -16,8 +16,8 @@ export default async function getInfoData(
       .then((response) => response.text())
       .then((data) => data);
 
-    res.status(200).send(parser.parse(data)["report"]["deviceInformation"]);
+    res.status(200).send(parser.parse(data)["report"]["deviceInformation"] as unknown as DeviceInfo);
   } catch (error) {
-    res.status(500).send(`Error occured ${error}`);
+    res.status(500).send(`Error occured ${error as string}`);
   }
 }
