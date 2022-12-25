@@ -15,6 +15,7 @@
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "eslint": "8.22.0",
+    "husky": "^8.0.0",
     "lerna": "^6.1.0",
     "prettier": "^2.8.1"
   },
@@ -23,7 +24,7 @@
     "link": "lerna link",
     "lint": "lerna run lint",
     "format": "prettier --write .",
-    "prepare": "yarn bootstrap && yarn link",
+    "prepare": "yarn bootstrap && yarn link && husky install",
     "build:backend": "lerna run build --scope '@reaktor-birdnest/{backend-app,types,utils}'",
     "build:frontend": "lerna run build --scope '@reaktor-birdnest/{nextjs-app,types,utils}'",
     "build:utils": "lerna run build --scope '@reaktor-birdnest/{types,utils}'",
