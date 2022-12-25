@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import { Drone, Pilot, PilotWithDrone, DroneResponse } from '@reaktor-birdnest/types';
-import { isDroneViolatingPerimiter } from '@reaktor-birdnest/utils';
+import { isDroneViolatingPerimeter } from '@reaktor-birdnest/utils';
 import { PrismaClient, Pilot as PrismaPilot } from '@prisma/client';
 
 const parserOptions = {
@@ -26,7 +26,7 @@ const getIntruderPilots = async (): Promise<PilotWithDrone[]> => {
 
   /** Array contains information about drones who passed the perimiter */
   const droneIntruders: Drone[] = droneData.filter((drone: Drone) =>
-    isDroneViolatingPerimiter(drone.positionX, drone.positionY)
+    isDroneViolatingPerimeter(drone.positionX, drone.positionY)
   );
 
   return await Promise.all(

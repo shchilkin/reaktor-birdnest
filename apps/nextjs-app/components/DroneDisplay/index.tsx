@@ -1,6 +1,6 @@
 import { Drone } from '@prisma/client';
 import React, { useEffect, useRef } from 'react';
-import { isDroneViolatingPerimiter } from '@reaktor-birdnest/utils';
+import { isDroneViolatingPerimeter } from '@reaktor-birdnest/utils';
 import { useAPI } from '../../utils/useAPI';
 
 interface DroneDisplayProps {
@@ -42,7 +42,7 @@ const DroneDisplayCanvas: React.FunctionComponent<DroneDisplayCanvasProps> = ({ 
           context.beginPath();
           context.arc(Math.floor(drone.positionX / 1000), Math.floor(drone.positionY / 1000), 0.1, 0, 360, false);
 
-          context.strokeStyle = isDroneViolatingPerimiter(
+          context.strokeStyle = isDroneViolatingPerimeter(
             Math.floor(drone.positionX / 1000),
             Math.floor(drone.positionY / 1000),
             250,
