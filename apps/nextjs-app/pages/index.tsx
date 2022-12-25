@@ -1,30 +1,35 @@
-import Head from 'next/head';
-import { NextPage } from 'next';
-import { PrismaClient, Pilot } from '@prisma/client';
-import { SWRConfig } from 'swr';
-import IntrudersTable from '../components/IntrudersTable';
-import DroneDisplay from '../components/DroneDisplay';
-import { getDrones } from './api/drones';
-import { Drone } from '@reaktor-birdnest/types';
+import Head from "next/head";
+import { NextPage } from "next";
+import { PrismaClient, Pilot } from "@prisma/client";
+import { SWRConfig } from "swr";
+import IntrudersTable from "../components/IntrudersTable";
+import DroneDisplay from "../components/DroneDisplay";
+import { getDrones } from "./api/drones";
+import { Drone } from "@reaktor-birdnest/types";
 
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
-
   const drones = await getDrones();
 
-  const pilots = await prisma.pilot.findMany({
-    include: {
-      drone: true,
-    },
-  });
-
-  return {
-    props: { fallback: { 'api/pilots': pilots, 'api/drones': drones } },
-  };
+  try {
+    const pilots = await prisma.pilot.findMany({
+      include: {
+        drone: true
+      }
+    });
+    return {
+      props: { fallback: { "api/pilots": pilots, "api/drones": drones } }
+    };
+  } catch (e) {
+    console.error(e);
+    return {
+      props: { fallback: { "api/drones": drones } }
+    };
+  }
 }
 
 interface HomeProps {
-  fallback: { 'api/pilots': Pilot[]; 'api/drones': Drone[] };
+  fallback: { "api/pilots": Pilot[]; "api/drones": Drone[] };
 }
 
 const Home: NextPage<HomeProps> = ({ fallback }) => {
@@ -38,14 +43,14 @@ const Home: NextPage<HomeProps> = ({ fallback }) => {
         </Head>
         <SWRConfig
           value={{
-            fallbackData: fallback['api/drones'],
+            fallbackData: fallback["api/drones"]
           }}
         >
           <DroneDisplay width={500} height={500} />
         </SWRConfig>
         <h1 className="text-2xl font-semibold mx-4">Intruders list</h1>
         <div className="w-full mx-4">
-          <SWRConfig value={{ fallbackData: fallback['api/pilots'] }}>
+          <SWRConfig value={{ fallbackData: fallback["api/pilots"] }}>
             <IntrudersTable />
           </SWRConfig>
         </div>
