@@ -1,0 +1,4 @@
+apps/nextjs-app/.next
+packages/utils/dist/
+packages/types/dist/
+apps/backend-app/build/

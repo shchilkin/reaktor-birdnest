@@ -8,10 +8,5 @@
     "types": ["node"],
     "esModuleInterop": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "../utils/src/isDroneViolatingPerimiter.ts"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../utils/src/isDroneViolatingPerimiter.ts"]
 }

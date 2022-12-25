@@ -4,6 +4,6 @@ const nextConfig = {
   swcMinify: true,
 };
 
-const { withSuperjson } = require("next-superjson");
+const { withSuperjson } = require('next-superjson');
 
 module.exports = withSuperjson()(nextConfig);
