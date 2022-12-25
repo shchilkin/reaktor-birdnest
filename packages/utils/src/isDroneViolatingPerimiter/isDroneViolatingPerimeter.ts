@@ -1,4 +1,4 @@
-import { getPointDistance } from './getPointDistance';
+import { getPointDistance } from '../getPointDistance/getPointDistance';
 
 /** Checks if drone is violating perimiter
  * @param x - drone x coordinate
@@ -9,7 +9,7 @@ import { getPointDistance } from './getPointDistance';
  * @param ndzCenterY - no drone zone center y coordinate
  * @returns - true if drone is violating perimiter, false otherwise
  */
-export const isDroneViolatingPerimiter = (
+export const isDroneViolatingPerimeter = (
   x: number,
   y: number,
   ndzRange = 100000,

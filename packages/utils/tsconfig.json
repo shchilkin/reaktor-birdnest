@@ -7,5 +7,7 @@
     "module": "commonjs",
     "lib": ["es6"]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
