@@ -1,2 +1,2 @@
-export * from './isDroneViolatingPerimiter';
-export * from './getPointDistance';
+export * from './isDroneViolatingPerimiter/isDroneViolatingPerimeter';
+export * from './getPointDistance/getPointDistance';

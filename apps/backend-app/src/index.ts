@@ -9,7 +9,7 @@ const parserOptions = {
 };
 const parser = new XMLParser(parserOptions);
 const prisma = new PrismaClient();
-const droneEndpoint = 'https://assignments.reaktor.com/birdnest/drones';
+const droneEndpoint = 'https://assignments.reaktor.com/birdnest/drones/';
 const pilotEndpoint = 'https://assignments.reaktor.com/birdnest/pilots/';
 
 const getIntruderPilots = async (): Promise<PilotWithDrone[]> => {
@@ -26,8 +26,7 @@ const getIntruderPilots = async (): Promise<PilotWithDrone[]> => {
 
   /** Array contains information about drones who passed the perimiter */
   const droneIntruders: Drone[] = droneData.filter((drone: Drone) =>
-    // TODO: Current implementation is not precise, consider comparing float coordinates
-    isDroneViolatingPerimiter(Math.floor(drone.positionX), Math.floor(drone.positionY))
+    isDroneViolatingPerimiter(drone.positionX, drone.positionY)
   );
 
   return await Promise.all(

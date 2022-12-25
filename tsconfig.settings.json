@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "composite": true,
-    "types": [],
+    "types": ["jest"],
     "allowJs": true,
     "strict": true,
     "sourceMap": true,
