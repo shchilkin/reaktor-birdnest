@@ -33,7 +33,7 @@
     "build:utils": "lerna run build --scope '@reaktor-birdnest/{types,utils}'",
     "start:frontend": "lerna run start --scope '@reaktor-birdnest/nextjs-app'",
     "start:backend": "lerna run start --scope '@reaktor-birdnest/backend-app'",
-    "dev:frontend": "lerna run start --scope '@reaktor-birdnest/nextjs-app'",
-    "dev:backend": "lerna run start --scope '@reaktor-birdnest/backend-app'"
+    "dev:frontend": "lerna run dev --scope '@reaktor-birdnest/nextjs-app'",
+    "dev:backend": "lerna run dev --scope '@reaktor-birdnest/backend-app'"
   }
 }
