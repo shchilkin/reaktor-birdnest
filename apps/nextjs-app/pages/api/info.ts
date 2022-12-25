@@ -1,22 +1,19 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { XMLParser } from "fast-xml-parser";
-import { DeviceInfo } from "@reaktor-birdnest/types";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { XMLParser } from 'fast-xml-parser';
+import { DeviceInfo } from '@reaktor-birdnest/types';
 
-export default async function getInfoData(
-  _req: NextApiRequest,
-  res: NextApiResponse<DeviceInfo | string>
-) {
+export default async function getInfoData(_req: NextApiRequest, res: NextApiResponse<DeviceInfo | string>) {
   const parserOptions = {
     ignorePiTags: true,
   };
   const parser = new XMLParser(parserOptions);
 
   try {
-    const data = await fetch("https://assignments.reaktor.com/birdnest/drones")
-      .then((response) => response.text())
-      .then((data) => data);
+    const data = await fetch('https://assignments.reaktor.com/birdnest/drones')
+      .then(response => response.text())
+      .then(data => data);
 
-    res.status(200).send(parser.parse(data)["report"]["deviceInformation"] as unknown as DeviceInfo);
+    res.status(200).send(parser.parse(data)['report']['deviceInformation'] as unknown as DeviceInfo);
   } catch (error) {
     res.status(500).send(`Error occured ${error as string}`);
   }

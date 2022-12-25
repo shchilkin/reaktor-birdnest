@@ -1,4 +1,4 @@
-import { Drone } from "./Drone";
+import { Drone } from './Drone';
 
 export interface Pilot {
   pilotId: string;

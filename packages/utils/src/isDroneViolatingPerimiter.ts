@@ -1,4 +1,4 @@
-import { getPointDistance } from "./getPointDistance";
+import { getPointDistance } from './getPointDistance';
 
 /** Checks if drone is violating perimiter
  * @param x - drone x coordinate
@@ -17,12 +17,7 @@ export const isDroneViolatingPerimiter = (
   ndzCenterY = 250000
 ): boolean => {
   // get drone coordinates from params
-  const pointDistanceFromCircleCenter = getPointDistance(
-    x,
-    y,
-    ndzCenterX,
-    ndzCenterY
-  );
+  const pointDistanceFromCircleCenter = getPointDistance(x, y, ndzCenterX, ndzCenterY);
   const circleRadius = ndzRange / 2;
 
   // inside circle d < r | d = r / outside the circle d > r

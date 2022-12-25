@@ -1,5 +1,5 @@
-import { Drone, Pilot } from "@prisma/client";
-import PilotTableCellTime from "../PilotTableCellTime";
+import { Drone, Pilot } from '@prisma/client';
+import PilotTableCellTime from '../PilotTableCellTime';
 
 export interface PilotWithDrone extends Pilot {
   drone: Drone;
@@ -8,9 +8,7 @@ export interface PilotWithDrone extends Pilot {
 interface PilotListItemProps {
   pilot: PilotWithDrone;
 }
-const IntrudersTableCell: React.FunctionComponent<PilotListItemProps> = ({
-  pilot,
-}) => {
+const IntrudersTableCell: React.FunctionComponent<PilotListItemProps> = ({ pilot }) => {
   return (
     <tr>
       <td>

@@ -1,7 +1,6 @@
-import { Pilot, Drone } from "@prisma/client";
-import IntrudersTableCell from "../IntrudersTableCell";
-import {useAPI} from "../../utils/useAPI";
-
+import { Pilot, Drone } from '@prisma/client';
+import IntrudersTableCell from '../IntrudersTableCell';
+import { useAPI } from '../../utils/useAPI';
 
 export interface PilotWithDrone extends Pilot {
   drone: Drone;
@@ -19,15 +18,14 @@ const compareTime = (a: PilotWithDrone, b: PilotWithDrone): number => {
   return 0;
 };
 
-
 const IntrudersTable = () => {
-  const { data, error } = useAPI<PilotWithDrone[]>("/api/pilots");
+  const { data, error } = useAPI<PilotWithDrone[]>('/api/pilots');
 
   if (error) return <code>Error</code>;
   if (!data) return <code>Loading...</code>;
 
   return (
-    <table className='table-auto w-full text-left'>
+    <table className="table-auto w-full text-left">
       <thead>
         <tr>
           <th>Name</th>

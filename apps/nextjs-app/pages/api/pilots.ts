@@ -1,12 +1,9 @@
-import { Pilot, PrismaClient } from "@prisma/client";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { Pilot, PrismaClient } from '@prisma/client';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
-export default async function handler(
-  _req: NextApiRequest,
-  res: NextApiResponse<Pilot[]>
-) {
+export default async function handler(_req: NextApiRequest, res: NextApiResponse<Pilot[]>) {
   try {
     const pilots = await prisma.pilot.findMany({
       include: {
