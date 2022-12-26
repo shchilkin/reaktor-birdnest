@@ -13,7 +13,8 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "dev": "npx prisma generate && npx nodemon",
+    "generate-schema": "npx prisma generate --schema=../prisma/schema.prisma",
+    "dev": " yarn generate-schema && npx nodemon",
     "build": "rimraf ./build && tsc && npx prisma generate",
     "start": "yarn run build && node build/index.js",
     "lint": "eslint src --ext js,ts"
@@ -25,5 +26,8 @@
     "axios": "^1.2.1",
     "fast-xml-parser": "^4.0.12",
     "typescript": "^4.9.4"
+  },
+  "prisma": {
+    "schema": "../prisma/schema.prisma"
   }
 }

@@ -1,4 +1,5 @@
-import { Drone } from './Drone';
+import { Drone } from "./Drone";
+import { ClosedConfirmedDistance } from "./ClosedConfirmedDistance";
 
 export interface Pilot {
   pilotId: string;
@@ -7,8 +8,6 @@ export interface Pilot {
   phoneNumber: string;
   createdDt: string;
   email: string;
-}
-
-export interface PilotWithDrone extends Pilot {
   drone: Drone;
+  closedConfirmedDistance: ClosedConfirmedDistance;
 }
