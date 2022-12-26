@@ -9,11 +9,11 @@ Done as a [pre-assignment](https://assignments.reaktor.com/birdnest/) for Reakto
 ## Project Structure
 
     .
-    ├── apps                
+    ├── apps
     │   ├── nextjs-app      # Fullstack web application, created with Next.js
     │   ├── backend-app     # Backend service, which runs on background and collects drones
     │   └── prisma          # Prisma ORM Database Schema
-    ├── packages             
+    ├── packages
     │   ├── types           # shared types
     │   └── utils           # Shared functions
     ├── LICENSE
@@ -54,16 +54,18 @@ or use it with npx:
     npx prisma
 
 ##### Generate Prisma client
+
 Run `yarn prisma:generate` to generate the prisma client
 
 ##### Database credentials
+
 Make sure to provide the correct database credentials in the `.env` file.
 Prisma uses `DATABASE_URL` environment variable to connect to the database.
-
 
 ## Limitations
 
 there are some limitations in this project, which are not implemented yet:
+
 - [ ] Add more tests
 - [ ] Add Docker support
 - [ ] Add CI/CD support
