@@ -10,7 +10,7 @@ const deleteStalePilotData = async () => {
       console.info(`delete ${pilot.firstName} ${pilot.lastName} from database`);
       return prismaClient.pilot
         .delete({ where: { id: pilot.id } })
-        .catch(error => console.error(error))
+        .catch(error => console.error("error occur while trying to delete pilot data", error.message))
         .finally(void (async () => await prismaClient.$disconnect())());
     })
   );
