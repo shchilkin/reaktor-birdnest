@@ -1,7 +1,7 @@
 import { Drone } from '@prisma/client';
 import React, { useEffect, useRef } from 'react';
 import { isDroneViolatingPerimeter } from '@reaktor-birdnest/utils';
-import { useAPI } from '../../utils/useAPI';
+import useSWR from 'swr';
 
 interface DroneDisplayProps {
   width: number;
@@ -63,7 +63,7 @@ const DroneDisplayCanvas: React.FunctionComponent<DroneDisplayCanvasProps> = ({ 
 };
 
 const DroneDisplay: React.FunctionComponent<DroneDisplayProps> = ({ width, height }) => {
-  const { data, error } = useAPI<Drone[]>('/api/drones');
+  const { data, error } = useSWR('/api/drones', url => fetch(url).then(res => res.json()));
 
   if (error) return <div>Error</div>;
 

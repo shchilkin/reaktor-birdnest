@@ -1,13 +1,12 @@
-import { Drone, Pilot } from '@prisma/client';
 import PilotTableCellTime from '../PilotTableCellTime';
-
-export interface PilotWithDrone extends Pilot {
-  drone: Drone;
-}
+import React from 'react';
+import { PilotWithDrone } from '../IntrudersTable';
+import PilotTableCellDistance from '../PilotTableCellDistance';
 
 interface PilotListItemProps {
   pilot: PilotWithDrone;
 }
+
 const IntrudersTableCell: React.FunctionComponent<PilotListItemProps> = ({ pilot }) => {
   return (
     <tr>
@@ -16,6 +15,9 @@ const IntrudersTableCell: React.FunctionComponent<PilotListItemProps> = ({ pilot
       </td>
       <td>{pilot.email}</td>
       <td>{pilot.phoneNumber}</td>
+      <td>
+        <PilotTableCellDistance closedConfirmedDistance={pilot.closedConfirmedDistance} />
+      </td>
       <td>
         <PilotTableCellTime time={pilot.updatedAt} />
       </td>

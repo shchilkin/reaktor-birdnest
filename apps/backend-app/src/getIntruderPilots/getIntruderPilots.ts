@@ -1,11 +1,10 @@
-import { Drone, Pilot, ClosedConfirmedDistance } from "@reaktor-birdnest/types";
-import axios from "axios";
-import { getPointDistance, isDroneViolatingPerimeter } from "@reaktor-birdnest/utils";
-import getDroneData from "../getDroneData/getDroneData";
-import * as console from "console";
+import { Drone, Pilot, ClosedConfirmedDistance } from '@reaktor-birdnest/types';
+import axios from 'axios';
+import { getPointDistance, isDroneViolatingPerimeter } from '@reaktor-birdnest/utils';
+import getDroneData from '../getDroneData/getDroneData';
+import * as console from 'console';
 
-
-const pilotEndpoint = "https://assignments.reaktor.com/birdnest/pilots/";
+const pilotEndpoint = 'https://assignments.reaktor.com/birdnest/pilots/';
 
 export interface PilotWithDroneAndDistance extends Pilot {
   drone: Drone;
@@ -13,15 +12,14 @@ export interface PilotWithDroneAndDistance extends Pilot {
 }
 
 const getIntruderPilots = async (): Promise<PilotWithDroneAndDistance[]> => {
-
   const droneData = await getDroneData();
 
   if (!droneData) return [];
 
   /** Array contains information about drones who passed the perimeter */
-  const droneIntruders: Drone[] = droneData.filter((drone: Drone) => isDroneViolatingPerimeter(drone.positionX, drone.positionY))
-  ;
-
+  const droneIntruders: Drone[] = droneData.filter((drone: Drone) =>
+    isDroneViolatingPerimeter(drone.positionX, drone.positionY)
+  );
   return await Promise.all(
     droneIntruders.map(async drone => {
       const pilot: Pilot = await axios
@@ -37,18 +35,16 @@ const getIntruderPilots = async (): Promise<PilotWithDroneAndDistance[]> => {
       return {
         ...pilot,
         drone: {
-          ...drone
+          ...drone,
         },
         closedConfirmedDistance: {
           positionX: drone.positionX,
           positionY: drone.positionY,
-          distance: closedConfirmedDistance
-        }
+          distance: closedConfirmedDistance,
+        },
       };
     })
   );
 };
 
 export default getIntruderPilots;
-
-

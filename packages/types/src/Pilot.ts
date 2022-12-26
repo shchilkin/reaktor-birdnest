@@ -1,5 +1,5 @@
-import { Drone } from "./Drone";
-import { ClosedConfirmedDistance } from "./ClosedConfirmedDistance";
+import { Drone } from './Drone';
+import { ClosedConfirmedDistance } from './ClosedConfirmedDistance';
 
 export interface Pilot {
   pilotId: string;

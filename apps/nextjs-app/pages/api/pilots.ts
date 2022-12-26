@@ -7,9 +7,11 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
   try {
     const pilots = await prisma.pilot.findMany({
       include: {
+        closedConfirmedDistance: true,
         drone: true,
       },
     });
+
     res.status(200).send(pilots);
   } catch (error: unknown) {
     res.status(500);
