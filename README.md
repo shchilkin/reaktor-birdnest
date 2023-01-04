@@ -91,5 +91,5 @@ there are some limitations in this project, which are not implemented yet:
 
 ## License
 
-Licensed under the MIT License, Copyright © 2021 Aleksandr Shchilkin
+Licensed under the MIT License, Copyright © 2022 Aleksandr Shchilkin
 See [LICENSE](./LICENSE) for more information.
